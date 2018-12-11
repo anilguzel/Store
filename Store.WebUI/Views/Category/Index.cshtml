@@ -1,0 +1,67 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br/>
+<Br />
+<div style="margin-top: 30px;">
+    <a href="~/Category/Insert" class="btn btn-primary pull-right">Add a New Category</a><br /><br />
+</div>
+<hr />
+<div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>Category Id</th>
+            <th>Category Name</th>
+            <th>Parent Id</th>
+            <th>Hierarchy</th>
+
+        </tr>
+        </thead>
+        <tbody id="tblCategory"></tbody>
+    </table>
+</div>
+<br /><br />
+<hr />
+<h2></h2><br />
+<form id="CategoryUpdateForm" class="form-horizontal">
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Category Id</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" name="id" id="CategoryId" placeholder="" readonly>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Category Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="name" id="CategoryName" placeholder="Category Name" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">ParentId</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" name="parentId" id="ParentId" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Hierarchy</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" name="hierarchy" id="Hierarchy" placeholder="Hierarchy" required>
+        </div>
+    </div>
+
+    <div class="col-sm-5">
+        <input type="button" id="btnCategoryUpdate"  value="Update" class="btn btn-primary pull-right">
+    </div>
+    <div class="clearfix"></div>
+</form>
+
+
+<script language="javascript">
+    $(document).ready(function () {
+        CategoryList();
+    });
+
+</script>

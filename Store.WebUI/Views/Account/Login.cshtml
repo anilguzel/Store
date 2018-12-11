@@ -1,0 +1,44 @@
+﻿@model Store.WebUI.ViewModels.LoginAndRegisterViewModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@Html.ValidationSummary()
+
+@using (Html.BeginForm("Login", "Account", FormMethod.Post, new { id = "loginForm", style = "padding-left: 25px; padding-top: 60px;" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <input type="text" class="form-control" id="Login.Username" name="Login.Username" aria-describedby="emailHelp" placeholder="Kullanici adi veya email" required="">
+    </div>
+    <div class="form-group">
+        <input type="password" class="form-control" id="Login.Password" name="Login.Password" placeholder="Sifre" required>
+    </div>
+    <div class="form-group">
+        @Html.EditorFor(x => x.Login.RememberMe)<Text>Kullanici adimi hatirla</Text>
+    </div>
+    <div class="form-group">
+        <a href="~/Account/ForgotPassword">Sifremi Unuttum</a>
+    </div>
+    <button type="submit" class="btn btn-primary">Login</button>
+
+}
+@section scripts{ 
+
+    <script src="~/js/Login.js"></script>
+    <script>
+        
+        $(document).ready(function () {
+
+            var value = $.cookie("userName");
+            if (value != undefined) {
+                document.getElementById('Login.Username').value = value;
+            }
+        });
+    </script>
+}
+
