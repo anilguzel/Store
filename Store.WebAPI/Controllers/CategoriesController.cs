@@ -13,7 +13,7 @@ namespace Store.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     [Produces("application/json")]
     public class CategoriesController : ControllerBase
     {

@@ -97,9 +97,13 @@ namespace Store.WebAPI.Controllers
                         Email = model.Email
                     };
                     var result = await _userManager.CreateAsync(user, model.Password);
+                    if (model.ProductView)
+                    {
+                        var claimResult = await _userManager.AddClaimAsync(user, new Claim("product_view", "True"));
+                    }
                     if (result.Succeeded)
                     {
-                        return Ok(CreateToken(user));
+                        return Ok();
                     }
                     else
                     {

@@ -15,6 +15,8 @@ namespace Store.WebUI.Controllers
     {
         public ActionResult Index()
         {
+            // Index, Update, Delete gibi islemler jQuery ile API`ye atilan istek ile saglanmaktadir. bu javascript dosyasina; wwwroot/js/Product.js den ulasabilirsiniz.
+
             return View();
         }
         public ActionResult Insert()

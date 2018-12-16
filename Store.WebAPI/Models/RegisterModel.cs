@@ -12,5 +12,6 @@ namespace Store.WebAPI.Models
         public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public bool ProductView { get; set; }
     }
 }

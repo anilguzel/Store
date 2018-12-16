@@ -32,5 +32,6 @@ namespace Store.WebUI.ViewModels
         [Display(Name = "Şifre Tekrar")]
         [Compare("Password", ErrorMessage = "Şifreler uyuşmuyor")]
         public string ConfirmPassword { get; set; }
+        public bool ProductView { get; set; }
     }
 }
