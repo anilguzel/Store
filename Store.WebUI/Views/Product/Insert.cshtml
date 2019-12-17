@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewData["Title"] = "Insert";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Insert</h2>
+
+<form id="ProductAddForm" class="form-horizontal">
+
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Product Name</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="Name" id="ProductName" placeholder="Product Name" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Description</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="Description" id="Description" placeholder="Description" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Price</label>
+        <div class="col-sm-10">
+            <input type="number" class="form-control" name="Price" id="Price" placeholder="Price" required>
+        </div>
+    </div>
+
+    <div id="selectCategories">
+        <div class="form-group">
+            <label for="" class="col-sm-2 control-label">Category</label>
+            <div class="col-sm-5">
+                <select id="CategoryId" name="CategoryId"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-5 offset-2">
+                <select id="CategoryId1" name="CategoryId1"></select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-5 offset-2">
+                <select id="CategoryId2" name="CategoryId2"></select>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-5">
+        <input type="button" id="btnProductAdd" onclick="ProductAdd(); return false;" value="Insert a Product" class="btn btn-primary pull-right">
+    </div>
+
+    <div class="clearfix"></div>
+</form>
+<script>
+    $("#CategoryId").on('change',
+        function () {
+            var id = $(this).children(":selected").attr("id");
+            $.ajax({
+                url: 'http://localhost:4040/api/categories/p/' + id,
+                type: 'GET',
+                success: function (data) {
+                    $('#CategoryId1').find('option').remove().end();
+                    $.each(data,
+                        function (i, item) {
+                            $("#CategoryId1").append(
+                                "<option id=" + item.id + ">" + item.name + "</option>"
+                            );
+                        });
+                }
+            });
+        });
+
+    $("#CategoryId1").on('change',
+        function () {
+            var id = $(this).children(":selected").attr("id");
+            $.ajax({
+                url: 'http://localhost:4040/api/categories/p/' + id,
+                type: 'GET',
+                success: function (data) {
+                    $('#CategoryId2').find('option').remove().end();
+                    $.each(data,
+                        function (i, item) {
+                            $("#CategoryId2").append(
+                                "<option id=" + item.id + ">" + item.name + "</option>"
+                            );
+                        });
+                }
+            });
+        });
+</script>
